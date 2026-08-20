@@ -1,6 +1,5 @@
 import re
 from typing import Optional
-# from langsmith import traceable
 
 class InputSanitizer:
 
@@ -34,9 +33,11 @@ class InputSanitizer:
         return True, None
 
     # Remove dangerous delimiters from input
-    def InputClean():
-        text= re.sub(r'[-]{3,}', '', text)
-        text= re.sub(r'[-\=]{3,}', '', text)
-        text= re.replace('{{', '{ {').replace('}}', '} }')
+    def InputClean(self, text: str) -> str:
+        text = re.sub(r"[-]{3,}", "", text)
+        text = re.sub(r"[=]{3,}", "", text)
+
+        text = text.replace("{{", "{ {").replace("}}", "} }")
+
         return text.strip()
 

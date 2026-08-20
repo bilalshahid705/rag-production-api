@@ -1,4 +1,4 @@
-from pii_detector import PIIDetector
+from app.security.pii_detector import PIIDetector
 
 def TestPIIMasking(): 
     input_pii_detector = PIIDetector()

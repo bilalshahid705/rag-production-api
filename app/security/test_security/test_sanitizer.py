@@ -1,4 +1,4 @@
-from sanitizer import InputSanitizer
+from app.security.sanitizer import InputSanitizer
 
 def TestSanitizer():
     input_sanitizer = InputSanitizer()
