@@ -1,1 +1,1 @@
-from app.cache.response_cache import Cache
+from app.cache.response_cache import ResponseCache

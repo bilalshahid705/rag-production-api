@@ -21,7 +21,7 @@ class JSONFormatter(logging.Formatter):
 
 # Create a structured JSON logger.
 def get_logger(name: str = "production-api") -> logging.Logger:
-    logger = logger.getLogger(name)
+    logger = logging.getLogger(name)
 
     if not logger.handlers:
         handler = logging.StreamHandler()

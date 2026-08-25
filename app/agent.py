@@ -14,8 +14,6 @@ class AgentState(TypedDict):
     retry_count: int
     model_used: str
 
-
-
 class ProductionAgent:
 
     def __init__(self):
