@@ -26,6 +26,7 @@ class ProductionAgent:
             temperature=0,
             timeout=30,
             max_retries=0,
+            api_key=settings.openai_api_key
         )
 
         self.fallback_llm = ChatOpenAI(
@@ -33,6 +34,7 @@ class ProductionAgent:
             temperature=0,
             timeout=30,
             max_retries=0,
+            api_key=settings.openai_api_key
         )
 
         self.max_retries = settings.max_retries
@@ -113,7 +115,7 @@ class ProductionAgent:
         )
 
         graph.add_conditional_edges(
-            "process",
+            "fallback",
             route_after_fallback,
             {"done": END, "error": "error"},
         )
@@ -124,7 +126,7 @@ class ProductionAgent:
 
     
     @traceable(name="production_agent_invoke")
-    def invoke(self, message: str) -> dict:
+    def invoke_agent(self, message: str) -> dict:
         # Invoke the agent with a user message
         # Returns: {"response": str, "model_used": str, "error": str | None}
 
