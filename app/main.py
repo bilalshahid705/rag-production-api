@@ -79,7 +79,7 @@ async def rate_limit_handler(
 
     return JSONResponse(
         status_code=429,
-        content={
+        content={ 
             "error": "rate_limit_exceeded",
             "message": "Too many requests. Please try again later.",
             "path": request.url.path,
@@ -123,7 +123,6 @@ async def chat(request: Request, body: ChatRequest):
                 response=cached_response,
                 thread_id=body.thread_id,
                 model_used="cache",
-                cached=True,
                 processing_time_ms=0
             )
 
@@ -181,7 +180,6 @@ async def chat(request: Request, body: ChatRequest):
         response=validation_response,
         thread_id=body.thread_id,
         model_used=model_used,
-        cached=False,
         processing_time_ms=round(timer.elapsed_ms, 2)
     )
 

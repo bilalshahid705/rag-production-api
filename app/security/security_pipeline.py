@@ -34,5 +34,7 @@ class SecurityPipeline:
     
     @traceable(name="security_check_output")
     def CheckOutput(self, text: str) -> tuple[str, list[str]]:
-        return self.output_validator.ValidateText(text)
+        _, cleaned_output, reason = self.output_validator.ValidateText(text)
+        notes = [reason] if reason else []
+        return cleaned_output, notes
 
