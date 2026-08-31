@@ -17,7 +17,6 @@ class ChatResponse(SQLModel):
     response: str
     thread_id: str
     model_used: str
-    cache: bool = False
     processing_time_ms: float
     # default_factory calls a function to generate the default value.
     # lambda is an anonymous function that returns the current datetime.
@@ -36,7 +35,7 @@ class MetricsResponse(SQLModel):
     total_requests: int
     total_errors: int
     error_rate: str
-    avg_latency_ms: int
+    avg_latency_ms: float
     cache_hit_rate: str
     total_input_tokens: int
     total_output_tokens: int
